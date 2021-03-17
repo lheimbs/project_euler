@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from timeit import default_timer as timer
-
+from utils import is_prime
 
 def primefactors(n):
     factors = []
@@ -37,20 +37,6 @@ def prime_factors(x):
             res+=prime_factors(x//i)
             break
     return res
-
-
-def is_prime(x):
-    if x <= 1:
-        return False
-    elif x <= 3:
-        return True
-    elif x % 2 == 0 or x % 3 == 0:
-        return False
-    else:
-        for i in range(5, round(x**(1/2)), 6):
-            if x % i == 0 or x % (i + 2) == 0:
-                return False
-    return True
 
 
 if __name__ == "__main__":
