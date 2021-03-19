@@ -1,5 +1,4 @@
 import sys
-from tqdm import tqdm
 
 if len(sys.argv) > 1 and sys.argv[1].isnumeric():
     n = int(sys.argv[1])
@@ -14,11 +13,11 @@ def assert_triplet(a, b, c):
     return False
 
 def get_triplet_for_sum(n):
-    for i in tqdm(range(1,n//3)):
-        for j in range(i+1, n-1):
-            for k in range(j+1, n):
-                if assert_triplet(i, j, k) and i+j+k == n:
-                    print(f"{i}+{j}+{k} = {n}; prod = {i*j*k}.")
-                    return i, j, k
+    for i in range(3, (n-3) // 3):
+        for j in range(i+1, (n-1-i) // 2):
+            k = n - i - j
+            if assert_triplet(i, j, k) and i+j+k == n:
+                print(f"{i}+{j}+{k} = {n}; prod = {i*j*k}.")
+                return i, j, k
 
 get_triplet_for_sum(n)
