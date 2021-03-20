@@ -11,3 +11,21 @@ def is_prime(x):
         i += 6
     return True
 
+def is_prime_faster(n):
+    if n == 1:
+        return False
+    if n < 4:
+        return True
+    if n%2 == 0:
+        return False
+    if n < 9:
+        return True
+    r = floor(n**(1/2))
+    f = 5
+    while f <= r:
+        if n%f == 0:
+            return False
+        if n%(f+2) == 0:
+            return False
+        f += 6
+    return True
