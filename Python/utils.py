@@ -104,3 +104,32 @@ def sieve_optm(n):
         i += 1
     return sum
 
+
+def get_collatz_sequence_len(n):
+    count = 1
+    orig = n
+    if orig % 10000 == 0:
+        print(orig, end='\r')
+    while n > 1:
+        if n%2 == 0:
+            n /= 2
+        else:
+            n = 3*n + 1
+        count += 1
+    return orig, count
+
+
+def get_collatz_sequence_length(n, print_=False):
+    count = 1
+    while n > 1:
+        if print_:
+            print(n, end=' -> ')
+        if n%2 == 0:
+            n /= 2
+        else:
+            n = 3*n + 1
+        count += 1
+    if print_:
+        print(n)
+    return count
+
