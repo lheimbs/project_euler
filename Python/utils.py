@@ -133,3 +133,13 @@ def get_collatz_sequence_length(n, print_=False):
         print(n)
     return count
 
+
+def fac(n):
+    if n > 1:
+        return n * fac(n-1)
+    return n
+
+
+def binom_coeff(n, k):
+    return fac(n)/(fac(k)*fac(n-k))
+
