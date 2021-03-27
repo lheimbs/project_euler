@@ -1,5 +1,13 @@
+import sys
 from itertools import chain
 import numpy as np
+
+
+def get_N():
+    if len(sys.argv) > 1 and sys.argv[1].isnumeric():
+        return int(sys.argv[1])
+    return None
+
 
 def is_prime(x):
     if x <= 3:
