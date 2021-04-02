@@ -151,3 +151,23 @@ def fac(n):
 def binom_coeff(n, k):
     return fac(n)/(fac(k)*fac(n-k))
 
+
+
+def get_proper_divisors(n):
+    if n < 2:
+        return [0]
+    factors = get_prime_factors(n)
+    if n in factors:
+        factors.remove(n)
+    if n > 1 and 1 not in factors:
+        proper_divisors = factors + [1]
+    else:
+        proper_divisors = factors
+    for factor in factors:
+        i = factor
+        while i <= n//2:
+            if i not in proper_divisors and n % i == 0:
+                proper_divisors.append(i)
+            i += factor
+    return sorted(proper_divisors)
+
