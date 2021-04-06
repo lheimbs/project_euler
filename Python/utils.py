@@ -21,6 +21,7 @@ def is_prime(x):
         i += 6
     return True
 
+
 def is_prime_faster(n):
     if n == 1:
         return False
@@ -39,6 +40,7 @@ def is_prime_faster(n):
             return False
         f += 6
     return True
+
 
 def get_prime_factors(n):
     factors = []
@@ -62,6 +64,7 @@ def get_prime_factors(n):
         factor += 2
     return factors
 
+
 def get_prime_factors_faster(n):
     l = []
     for i in chain([2], range(3, n//2 + 1)):
@@ -71,6 +74,7 @@ def get_prime_factors_faster(n):
         if i > n:
             break
     return l
+
 
 def quadratic_sieve(n):
     # taken from https://projecteuler.net/overview=010
@@ -88,6 +92,7 @@ def quadratic_sieve(n):
         if not sieve[n]:
             sum += n
     return sum
+
 
 def sieve_optm(n):
     limit = int(n)
@@ -152,7 +157,6 @@ def binom_coeff(n, k):
     return fac(n)/(fac(k)*fac(n-k))
 
 
-
 def get_proper_divisors(n):
     if n < 2:
         return [0]
@@ -170,4 +174,13 @@ def get_proper_divisors(n):
                 proper_divisors.append(i)
             i += factor
     return sorted(proper_divisors)
+
+
+def fibo(curr_0, curr_1, limiter=None):
+    new = curr_0 + curr_1
+
+    if limiter is not None and limiter(new, curr_0, curr_1):
+        return
+
+    fibo(curr_1, new, limiter)
 
