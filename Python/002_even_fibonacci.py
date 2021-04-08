@@ -1,22 +1,24 @@
 #!/usr/bin/env python3
+import utils
 
 MAX = 4e6
 res = 0
 
+
 def is_even(x):
     return not x%2
 
-def fibo(curr_0, curr_1):
+
+def limiter(new, curr_0, curr_1):
     global res
-    new = curr_0 + curr_1
-    # print("new", new, "res", res)
     if is_even(curr_1):
-        res+=curr_1
+        res += curr_1
 
     if new > MAX:
         print(res)
-        return
+        return True
+    return False
 
-    fibo(curr_1, new)
 
-fibo(1,2)
+utils.fibo(1,2, limiter=limiter)
+
