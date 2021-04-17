@@ -4,6 +4,10 @@ from itertools import chain
 import numpy as np
 
 
+def is_even(n):
+    return n % 2 == 0
+
+
 def get_N():
     if len(sys.argv) > 1 and sys.argv[1].isnumeric():
         return int(sys.argv[1])
@@ -188,4 +192,17 @@ def fibo(curr_0, curr_1, limiter=None):
         return
 
     fibo(curr_1, new, limiter)
+
+
+def is_palindrome(n):
+    n = str(n)
+    middle = len(n) // 2
+    if not is_even(len(n)):
+        n = n[:middle] + n[middle + 1:]
+
+    # split string in two lists, reverse 2nd list and check if lists are same
+    n_left, n_right = n[:middle], ''.join(reversed(n[middle:]))
+    if n_left == n_right:
+        return True
+    return False
 
