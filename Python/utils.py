@@ -34,6 +34,8 @@ def is_prime_faster(n):
         return True
     if n%2 == 0:
         return False
+    if n%3 == 0:
+        return False
     if n < 9:
         return True
     r = floor(n**(1/2))
