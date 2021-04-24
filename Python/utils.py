@@ -208,3 +208,14 @@ def is_palindrome(n):
         return True
     return False
 
+
+def is_pandigital(n):
+    n = str(n)
+    available = [c for c in '123456789'[:len(n)]]
+    for char in str(n):
+        if char in available:
+            available.remove(char)
+        else:
+            return False
+    return True if not available else False
+
